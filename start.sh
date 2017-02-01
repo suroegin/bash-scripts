@@ -14,8 +14,8 @@ apt -y install build-essential sed locales-all htop mc dialog mosh iptables merc
 libncursesw5-dev libreadline-gplv2-dev libssl-dev libgdbm-dev libc6-dev libsqlite3-dev tk-dev liblzma-dev
 
 sed ‘2,$d’ /etc/default/locale > /etc/default/locale
-echo ‘LANG=«ru_RU.UTF-8»’ > /etc/default/locale
-echo ‘LANGUAGE=«ru_RU.UTF-8»’ > /etc/default/locale
+echo ‘LANG="ru_RU.UTF-8"’ > /etc/default/locale
+echo ‘LANGUAGE="ru_RU.UTF-8"’ > /etc/default/locale
 
 dpkg-reconfigure tzdata
 iptables -I INPUT 1 -p udp --dport 60000:61000 -j ACCEPT
@@ -31,11 +31,11 @@ read item
 case "$item" in
     y|Y) echo "You typed "Y", okay"
         
-        echo «= = = = = = = = = =«
-        echo «INSTALLING PhantomJS, SELENIUM»
-        echo «= = = = = = = = = =«
+        echo "= = = = = = = = = ="
+        echo "INSTALLING PhantomJS, SELENIUM"
+        echo "= = = = = = = = = ="
         apt install -y libfontconfig1 libfontconfig1-dev build-essential libfreetype6 libfreetype6-dev
-        export PHANTOM_JS=«phantomjs-2.1.1-linux-x86_64»
+        export PHANTOM_JS="phantomjs-2.1.1-linux-x86_64"
         wget https://bitbucket.org/ariya/phantomjs/downloads/$PHANTOM_JS.tar.bz2
         tar xvjf $PHANTOM_JS.tar.bz2
         mv $PHANTOM_JS /usr/local/share
