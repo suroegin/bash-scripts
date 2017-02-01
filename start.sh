@@ -8,7 +8,9 @@ echo "= = = = = = = = ="
 apt update && apt -y upgrade
 
 # Install all apps which may be needed
-apt -y install build-essential sed locales-all htop mc dialog mosh iptables mercurial git python3 python3-setuptools python3-software-properties curl nginx 
+apt -y install build-essential sed locales-all htop mc dialog mosh tmux iptables mercurial git python3 python3-setuptools python3-software-properties curl nginx 
+easy_install3 pip
+pip3 install ipython
 
 # Install dev packages (optional)
 libncursesw5-dev libreadline-gplv2-dev libssl-dev libgdbm-dev libc6-dev libsqlite3-dev tk-dev liblzma-dev
