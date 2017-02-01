@@ -60,7 +60,7 @@ echo "= = = = = = = = ="
 echo "Enter the username:"
 read username
 adduser $username
-gpasswd -a $username sudo
+usermod -aG sudo $username
 
 echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
 echo "NOW REBOOTING… Bye bye! Please, login using just created username."
