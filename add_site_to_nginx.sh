@@ -1,19 +1,36 @@
 # You must to launch it under not-root user. 
 
-echo "\nFolder you have are:"
-ll /home/$USER/projects/
+IP_ADDRESS=$(hostname -i | awk '{print $2}')
+USERNAME=$USER
+
+echo "Folders which $USERNAME have in /projects"
+/bin/ls -alF /home/$USERNAME/projects
 
 echo "Choose folder name, please:"
-read folder
+read FOLDER_NAME
 echo "\nEnter name of new project (without spaces and not standard symbols, please)"
-read projectname
+read PROJECT_NAME
 
-sudo mkdir -p /home/$USER/projects/$folder/$projectname
-echo "\n/home/$USER/projects/$folder/$projectname directory is created."
+/bin/mkdir -p /home/$USERNAME/projects/$FOLDER_NAME/$PROJECT_NAME
+echo "\n/home/$USER/projects/$FOLDER_NAME/$PROJECT_NAME directory is created."
 
-sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/$folder-$projectname
-sudo nano /etc/nginx/sites-available/$folder-$projectname
-sudo ln -s /etc/nginx/sites-available/$folder-$projectname /etc/nginx/sites-enabled/$folder-$projectname
-sudo service nginx restart
+sudo /bin/cp /etc/nginx/sites-available/default /etc/nginx/sites-available/$FOLDER_NAME-$PROJECT_NAME
 
-echo "Now you can upload project to: /home/$USER/projects/$folder/$projectname"
+sudo /bin/cat > /etc/nginx/sites-available/$FOLDER_NAME-$PROJECT_NAME <<FOO
+server {
+    listen 80;
+    server_name $IP_ADDRESS;
+    root /home/$USERNAME/projects/$FOLDER_NAME/$PROJECT_NAME;
+
+    location / {
+        try_files $uri =404;                                                                         }
+
+    }
+}
+FOO
+
+
+sudo /bin/ln -s /etc/nginx/sites-available/$FOLDER_NAME-$PROJECT_NAME /etc/nginx/sites-enabled/$FOLDER_NAME-$PROJECT_NAME
+sudo /usr/sbin/service nginx restart
+
+echo "Now you can upload project to: /home/$USERNAME/projects/$FOLDER_NAME/$PROJECT_NAME"
