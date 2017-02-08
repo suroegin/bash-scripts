@@ -16,12 +16,18 @@ pip3 install lxml
 # Install dev packages (optional)
 sudo apt-get install build-essential autoconf libtool pkg-config python-opengl python3-opengl python-pyrex python-pyside.qtopengl idle-python2.7 qt4-dev-tools qt4-designer libqtgui4 libqtcore4 libqt4-xml libqt4-test libqt4-script libqt4-network libqt4-dbus python-qt4 python-qt4-gl libgle3 python-dev libxml2-dev libxslt1-dev zlib1g-dev python3-pip libssl-dev libcurl4-openssl-dev libncursesw5-dev libreadline-gplv2-dev libgdbm-dev libc6-dev libsqlite3-dev tk-dev liblzma-dev libevent-dev
 
+# Change locale to ru_RU
 sed ‘2,$d’ /etc/default/locale > /etc/default/locale
 echo ‘LANG="ru_RU.UTF-8"’ > /etc/default/locale
 echo ‘LANGUAGE="ru_RU.UTF-8"’ > /etc/default/locale
 
-dpkg-reconfigure tzdata
+# Allow ports for some apps (iptables)
 iptables -I INPUT 1 -p udp --dport 60000:61000 -j ACCEPT
+
+# Change timezone
+dpkg-reconfigure tzdata
+
+#Edit SSH config file
 vi /etc/ssh/ssh_config
 service ssh restart
 
