@@ -8,7 +8,7 @@ echo "= = = = = = = = ="
 apt update && apt -y upgrade
 
 # Install all apps which may be needed
-apt -y install build-essential software-properties-common python-software-properties sed locales-all htop mc dialog mosh tmux iptables mercurial git python3 python3-setuptools python3-software-properties curl nginx python-dev python3-dev
+apt -y install build-essential software-properties-common python-software-properties sed locales-all htop mc dialog mosh tmux iptables mercurial git python3 python3-setuptools python3-software-properties curl nginx python-dev python3-dev mailutils
 easy_install3 pip
 pip3 install ipython
 pip3 install lxml
