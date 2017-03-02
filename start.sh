@@ -5,7 +5,9 @@ echo "BEGIN TIME SAVER"
 echo "= = = = = = = = ="
 
 # Update and Upgrade
-apt update && apt -y upgrade
+apt update 
+apt install nano
+apt -y upgrade
 
 # Install all apps which may be needed
 apt -y install build-essential software-properties-common python-software-properties sed locales-all htop mc dialog mosh tmux iptables mercurial git python3 python3-setuptools python3-software-properties curl nginx python-dev python3-dev mailutils
@@ -29,7 +31,7 @@ iptables -I INPUT 1 -p udp --dport 60000:61000 -j ACCEPT
 dpkg-reconfigure tzdata
 
 #Edit SSH config file
-vi /etc/ssh/ssh_config
+nano /etc/ssh/ssh_config
 service ssh restart
 
 
