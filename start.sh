@@ -10,13 +10,20 @@ apt install nano
 apt -y upgrade
 
 # Install all apps which may be needed
-apt -y install build-essential software-properties-common python-software-properties sed locales-all htop mc dialog mosh tmux iptables mercurial git python3 python3-setuptools python3-software-properties curl nginx python-dev python3-dev mailutils
+apt -y install build-essential software-properties-common python-software-properties sed locales-all htop mc dialog mosh tmux iptables mercurial git python3 python3-setuptools python3-software-properties curl nginx python-dev python3-dev 
 easy_install3 pip
+pip3 install virtualenv
 pip3 install ipython
 pip3 install lxml
 
-# Install dev packages (optional)
-apt -y install autoconf libtool pkg-config python-opengl python3-opengl python-pyrex python-pyside.qtopengl idle-python2.7 qt4-dev-tools qt4-designer libqtgui4 libqtcore4 libqt4-xml libqt4-test libqt4-script libqt4-network libqt4-dbus python-qt4 python-qt4-gl libgle3 python-dev libxml2-dev libxslt1-dev zlib1g-dev python3-pip libssl-dev libcurl4-openssl-dev libncursesw5-dev libreadline-gplv2-dev libgdbm-dev libc6-dev libsqlite3-dev tk-dev liblzma-dev libevent-dev
+# (optional) For mail
+#apt -y install mailutils
+
+# (optional) PyQt packages
+apt -y install python-pyside.qtopengl qt4-dev-tools qt4-designer libqtgui4 libqtcore4 libqt4-xml libqt4-test libqt4-script libqt4-network libqt4-dbus python-qt4 python-qt4-gl 
+
+# (optional) Install dev packages
+apt -y install autoconf libtool pkg-config python-opengl python3-opengl python-pyrex idle-python2.7  libgle3 python-dev libxml2-dev libxslt1-dev zlib1g-dev python3-pip libssl-dev libcurl4-openssl-dev libncursesw5-dev libreadline-gplv2-dev libgdbm-dev libc6-dev libsqlite3-dev tk-dev liblzma-dev libevent-dev
 
 # Change locale to ru_RU
 # sed ‘2,$d’ /etc/default/locale > /etc/default/locale (???)
@@ -55,7 +62,6 @@ case "$item" in
         pip3 install selenium
         ;;
     n|N) echo "You typed N, bye bye"
-        exit 0
         ;;
     *) echo "Nothing typed, so we begin install this apps."
         ;;
@@ -77,7 +83,6 @@ case "$item" in
         yandex-disk setup
         ;;
     n|N) echo "You typed N, bye bye"
-        exit 0
         ;;
     *) echo "Nothing typed, so we begin install this apps."
         ;;
@@ -88,17 +93,11 @@ echo "= = = = = = = = ="
 echo "CREATING NEW USER…"
 echo "= = = = = = = = ="
 echo "Enter the username:"
-read username
-adduser $username
-usermod -aG sudo $username
+#read username
+#adduser $username
+#usermod -aG sudo $username
 
 echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
 echo "NOW REBOOTING… Bye bye! Please, login using just created username."
 echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
 reboot
-
-echo "= = = = = = = = ="
-echo ""
-echo "= = = = = = = = ="
-
-
