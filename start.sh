@@ -20,7 +20,7 @@ pip3 install lxml
 #apt -y install mailutils
 
 # (optional) PyQt packages
-apt -y install python-pyside.qtopengl qt4-dev-tools qt4-designer libqtgui4 libqtcore4 libqt4-xml libqt4-test libqt4-script libqt4-network libqt4-dbus python-qt4 python-qt4-gl 
+#apt -y install python-pyside.qtopengl qt4-dev-tools qt4-designer libqtgui4 libqtcore4 libqt4-xml libqt4-test libqt4-script libqt4-network libqt4-dbus python-qt4 python-qt4-gl 
 
 # (optional) Install dev packages
 apt -y install autoconf libtool pkg-config python-opengl python3-opengl python-pyrex idle-python2.7  libgle3 python-dev libxml2-dev libxslt1-dev zlib1g-dev python3-pip libssl-dev libcurl4-openssl-dev libncursesw5-dev libreadline-gplv2-dev libgdbm-dev libc6-dev libsqlite3-dev tk-dev liblzma-dev libevent-dev
@@ -93,9 +93,15 @@ echo "= = = = = = = = ="
 echo "CREATING NEW USER…"
 echo "= = = = = = = = ="
 echo "Enter the username:"
-#read username
-#adduser $username
-#usermod -aG sudo $username
+read username
+adduser $username
+usermod -aG sudo $username
+
+# UFW
+ufw allow 'Nginx Full'
+ufw allow 'OpenSSH'
+ufw allow 'mosh'
+ufw enable
 
 echo "= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = ="
 echo "NOW REBOOTING… Bye bye! Please, login using just created username."
