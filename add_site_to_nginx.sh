@@ -26,7 +26,7 @@ echo "\n/home/$USER/projects/$FOLDER_NAME/$PROJECT_NAME directory is created."
 
 sudo /bin/cp /etc/nginx/sites-available/default /etc/nginx/sites-available/$FOLDER_NAME-$PROJECT_NAME
 
-sudo /bin/cat > /etc/nginx/sites-available/$FOLDER_NAME-$PROJECT_NAME <<FOO
+sudo /bin/cat <<FOO > /etc/nginx/sites-available/$FOLDER_NAME-$PROJECT_NAME
 server {
     listen 80;
     server_name $IP_ADDRESS;
