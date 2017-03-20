@@ -47,3 +47,7 @@ FOO
 /usr/sbin/service nginx restart
 
 echo "Now you can upload project to: /home/$USERNAME/projects/$FOLDER_NAME/$PROJECT_NAME"
+
+
+
+
