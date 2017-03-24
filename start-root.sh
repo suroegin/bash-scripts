@@ -25,19 +25,21 @@ apt -y install autoconf libtool pkg-config python-opengl python3-opengl python-p
 #   source /etc/default/locale
 
 # Allow ports for some apps (iptables)
+echo -n "Your desire port for server?.. "
+read NEW_PORT
+
 iptables -I INPUT 1 -p udp --dport 60000:61000 -j ACCEPT
 ufw allow 'Nginx Full'
 ufw allow 'OpenSSH'
 ufw allow 'mosh'
+sudo ufw allow 60000:61000/udp
+ufw allow $NEW_PORT/tcp
+nano /etc/ssh/sshd_config
+/etc/init.d/ssh restart
 ufw enable
 
 # Change timezone
 dpkg-reconfigure tzdata
-
-#Edit SSH config file
-nano /etc/ssh/ssh_config
-service ssh restart
-
 
 echo "= = = = = = = = ="
 echo "CREATING NEW USER…"
