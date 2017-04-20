@@ -22,4 +22,6 @@ c.NotebookApp.port = 5235
 c.NotebookApp.allow_root = True
 FOO
 
-echo "\nReady! Just type: jupyter notebook and open link in the browser"
+echo ""
+echo "Ready! Just type: jupyter notebook and open link in the browser"
+echo ""
