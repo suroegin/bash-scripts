@@ -42,6 +42,8 @@ code --install-extension PKief.material-icon-theme
 code --install-extension lukehoban.go
 code --install-extension PeterJausovec.vscode-docker
 code --install-extension DavidAnson.vscode-markdownlint
+code --install-extension doublefint.pgsql
+code --install-extension bajdzis.vscode-database
 
 
 
