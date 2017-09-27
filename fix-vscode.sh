@@ -11,7 +11,6 @@ code --install-extension wholroyd.jinja
 code --install-extension freakypie.code-python-isort
 code --install-extension formulahendry.code-runner
 code --install-extension alexdima.copy-relative-path
-code --install-extension waderyan.gitblame
 code --install-extension donjayamanne.githistory
 code --install-extension Zignd.html-css-class-completion
 code --install-extension ionutvmi.path-autocomplete
@@ -24,12 +23,26 @@ code --install-extension sandy081.todotasks
 code --install-extension yzane.markdown-pdf
 code --install-extension goessner.mdmath
 code --install-extension yzhang.markdown-all-in-one
+code --install-extension eamodio.gitlens
+code --install-extension humao.rest-client
+code --install-extension Shan.code-settings-sync
+code --install-extension HookyQR.beautify
+code --install-extension naumovs.color-highlight
+code --install-extension IBM.output-colorizer
+code --install-extension redhat.java
+code --install-extension eg2.vscode-npm-script
+code --install-extension EditorConfig.EditorConfig
+code --install-extension DotJoshJohnson.xml
+code --install-extension joelday.docthis
 code --install-extension AlanWalk.markdown-toc
 code --install-extension mdickin.markdown-shortcuts
 code --install-extension bierner.markdown-preview-github-styles
 code --install-extension SolarLiner.linux-themes
 code --install-extension PKief.material-icon-theme
 code --install-extension lukehoban.go
+code --install-extension PeterJausovec.vscode-docker
+code --install-extension DavidAnson.vscode-markdownlint
+
 
 
 # Настройки в Linux лежат здесь:
