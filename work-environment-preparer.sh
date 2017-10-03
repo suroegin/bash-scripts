@@ -44,8 +44,10 @@ ssh -T $USERNAME@$IP_ADDR << 'EOF'
 source config.sh
 sudo apt-mark hold grub*
 sudo apt upgrade -y
-sudo apt install -y nano build-essential python3-pip python3-dev python-dev python-pip software-properties-common python-software-properties sed locales-all htop mc dialog tmux mercurial git python3-setuptools python3-software-properties curl nginx autoconf libtool pkg-config python-opengl python3-opengl python-pyrex libgle3 python-dev libxml2-dev libxslt1-dev zlib1g-dev libssl-dev libcurl4-openssl-dev libncursesw5-dev libreadline-gplv2-dev libgdbm-dev libc6-dev libsqlite3-dev tk-dev liblzma-dev libevent-dev xrdp xfce4 xfce4-goodies
-pip3 install lxml pep8 pylint flake8 ipython virtualenv pylint flake8 isort pep8 autopep8
+sudo add-apt-repository ppa:jonathonf/python-3.6
+sudo apt update
+sudo apt install python3.6
+sudo apt install -y nano build-essential software-properties-common sed dialog autoconf pkg-config tk-dev htop mc tmux mercurial git curl nginx libtool libgle3 libxml2-dev libxslt1-dev zlib1g-dev libssl-dev libcurl4-openssl-dev libncursesw5-dev libreadline-gplv2-dev libgdbm-dev libc6-dev libsqlite3-dev liblzma-dev libevent-dev python-dev python-opengl python-pip python-setuptools python-software-properties python3-dev python3-opengl python3-pip python3-setuptools python3-software-properties python3-venv xfce4 xfce4-goodies xrdp mosh
 
 sudo ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
 
