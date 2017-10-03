@@ -1,10 +1,10 @@
 #!/bin/bash
 
-if [ ! -f config.ini ]; then
+if [ ! -f config.sh ]; then
     echo "The config file does not exist. Create it, please."
     exit 1
 fi
-source config.ini
+source config.sh
 export IP_ADDR=`hostname -i | grep -o '[0-9]\{2,\}\.[0-9]\{2,\}\.[0-9]\{2,\}\.[0-9]\{2,\}';`
 export DEBIAN_FRONTEND=noninteractive
 
@@ -38,24 +38,42 @@ FOO
 usermod -aG sudo $USERNAME
 echo "$USERNAME ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
-cp config.ini /home/$USERNAME/config.ini
+cp config.sh /home/$USERNAME/config.sh
 
 ssh -T $USERNAME@$IP_ADDR << 'EOF'
-source config.ini
+source config.sh
 sudo apt-mark hold grub*
 sudo apt upgrade -y
 sudo apt install -y nano build-essential python3-pip python3-dev python-dev python-pip software-properties-common python-software-properties sed locales-all htop mc dialog tmux mercurial git python3-setuptools python3-software-properties curl nginx autoconf libtool pkg-config python-opengl python3-opengl python-pyrex libgle3 python-dev libxml2-dev libxslt1-dev zlib1g-dev libssl-dev libcurl4-openssl-dev libncursesw5-dev libreadline-gplv2-dev libgdbm-dev libc6-dev libsqlite3-dev tk-dev liblzma-dev libevent-dev xrdp xfce4 xfce4-goodies
 pip3 install lxml pep8 pylint flake8 ipython virtualenv pylint flake8 isort pep8 autopep8
 
-echo "Europe/Moscow" > sudo /etc/timezone    
-sudo dpkg-reconfigure -f noninteractive tzdata
+sudo ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
 
 echo "Installing Yandex.Disk..."
 echo "deb http://repo.yandex.ru/yandex-disk/deb/ stable main" | sudo tee -a /etc/apt/sources.list.d/yandex.list > /dev/null && wget http://repo.yandex.ru/yandex-disk/YANDEX-DISK-KEY.GPG -O- | sudo apt-key add - && sudo apt-get update && sudo apt-get install -y yandex-disk
-wget -O yandex-disk-setup.exp http://suroegin.com/bash/yandex-disk-setup.exp
-chmod +x yandex-disk-setup.exp
-./yandex-disk-setup.exp
-yandex-disk start
+/bin/cat << 'FOO' > yandex-disk-setup.sh
+#!/usr/bin/expect -f
+set timeout 1
+set sys_username $::env(USERNAME)
+set my_username $::env(YD_USERNAME)
+set my_password $::env(YD_PASSWORD)
+
+spawn yandex-disk setup
+expect "Would you like to use a proxy server? \[y/N\]: "
+send "\r"
+expect "(.+\n){0,}Enter username: "
+send "$my_username\r"
+expect "(.+\n){0,}Enter password: "
+send "$my_password\r"
+expect "(.+\n){0,}.+\/home\/$sys_username\/Yandex.Disk'\): "
+send "\r"
+expect "(.+\n){0,}.+launch on startup? \[Y/n\]: "
+send "\r"
+expect eof
+FOO
+
+chmod +x yandex-disk-setup.sh
+./yandex-disk-setup.sh
 
 echo "Installing Firefox..."
 sudo apt install -y firefox
