@@ -86,14 +86,4 @@ sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable
 sudo apt update
 sudo apt install -y google-chrome-stable
 
-/bin/cat << 'FOO' > ~/Desktop/install-postgresql
-#!/bin/bash
-echo "Installing PostgreSQL..."
-echo "deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main" | sudo tee /etc/apt/sources.list.d/pgdg.list
-wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-sudo apt update
-sudo apt install -y postgresql-9.6
-FOO
-chmod +x ~/Desktop/install-postgresql
-
 EOF
