@@ -86,4 +86,6 @@ sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable
 sudo apt update
 sudo apt install -y google-chrome-stable
 
+/bin/bash ~/Yandex.Disk/apps/install_all_apps.sh
+
 EOF
