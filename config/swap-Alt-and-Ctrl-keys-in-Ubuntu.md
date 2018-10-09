@@ -38,7 +38,7 @@ I have a plan to test commands in other Linux distributives and laptops.
 
 4. Use **dconf** (if necessary install it with `sudo apt install dconf-tools`) in two ways:
 
-	- Open dconf _editor from dashboard_ and navigate to the key /org/gnome/desktop/input-sources/xkb-options and set its value to:
+	- Open dconf _editor from dashboard_ and navigate to the key `/org/gnome/desktop/input-sources/xkb-options` and set its value to:
 
 		```bash
 		['ctrl:swap_lalt_lctl','ctrl:swap_ralt_rctl']
